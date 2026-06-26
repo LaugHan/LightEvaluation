@@ -1,0 +1,27 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python caches and build outputs
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+*.egg-info/
+
+# Local runtime state
+.omx/
+
+# Pipeline outputs live inside workspaces and should not be committed.
+test_workspace/runs/
+**/runs/
+
+# Editor / OS noise
+.DS_Store
+.vscode/
+.idea/
+

@@ -1,0 +1,33 @@
+name: gsm8k_rup_vllm_20_retry_lowmem
+
+model:
+  backend: vllm
+  path: /ssd/models/Qwen/Qwen2___5-0___5B-Instruct
+  data_parallel_size: 1
+  tensor_parallel_size: 1
+  max_model_len: 2048
+  gpu_memory_utilization: 0.2
+  dtype: auto
+  max_num_seqs: 8
+  enforce_eager: true
+
+dataset:
+  task_file: tasks/gsm8k_rup.py
+  source: data/GSM8K_RUP.csv
+  limit: 20
+  n_samples: 1
+
+generation:
+  max_tokens: 128
+  temperature: 0.0
+  stop: null
+  seed: 0
+
+output:
+  on_truncate: accept
+  flush_every: 1
+
+thresholds:
+  truncated: 0.5
+  extract_failed: 0.5
+  error: 0.5

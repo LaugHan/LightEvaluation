@@ -1,0 +1,29 @@
+name: demo_run
+
+model:
+  backend: api
+  base_url: http://localhost:8000/v1
+  model: demo-model
+  concurrency: 16
+  max_retries: 5
+
+dataset:
+  task_file: tasks/task_generative.py
+  source: data.jsonl
+  limit: null
+  n_samples: 1
+
+generation:
+  max_tokens: 256
+  temperature: 0.0
+  stop: null
+  seed: 0
+
+output:
+  on_truncate: accept
+  flush_every: 1
+
+thresholds:
+  truncated: 0.05
+  extract_failed: 0.02
+  error: 0.005
